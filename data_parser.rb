@@ -40,15 +40,15 @@ class Delivery
     "Pilot for this trip was #{pilot}"
   end
 
-  def profit
-    self.reduce(0) { |sum, money| sum + money[:money]}
-  end
-
-  def piloted?(flyer)
-    pilot.collect { |name| name.downcase }.detect do |pilot|
-      pilot.include? flyer.downcase
-    end
-  end
+  # def profit
+  #   self.reduce(0) { |sum, money| sum + money[:money]}
+  # end
+  #
+  # def piloted?(flyer)
+  #   pilot.collect { |name| name.downcase }.detect do |pilot|
+  #     pilot.include? flyer.downcase
+  #   end
+  # end
 
   def fry?
     pilot == "Fry"
@@ -85,7 +85,10 @@ deliveries.each do |name|
  puts name.pilot
 end
 
-
+all_pilots = deliveries.collect { |delivery| delivery.pilot}
+all_pilots
+puts "Here are the pilots:"
+puts all_pilots
 
 
 

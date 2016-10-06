@@ -2,9 +2,89 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Planet Express Report</title>
   </head>
   <body>
+    <h1><%= total_profit %></h1>
+    <table>
+      <tr>
+        <th>Pilot</th>
+        <th># of Trips</th>
+        <th>Total Bonus</th>
+      </tr>
+      <tr>
+        <td>Fry</td>
+        <td><%= fry_flights.length %></td>
+        <td><%= fry_tips %></td>
+      </tr>
+      <tr>
+        <td>
+          Amy
+        </td>
+        <td>
+          <%= amy_flights.length %>
+        </td>
+        <td>
+          <%= amy_tips %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Bender
+        </td>
+        <td>
+          <%= bender_flights.length %>
+        </td>
+        <td>
+          <%= bender_tips %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Leela
+        </td>
+        <td>
+          <%= leela_flights.length %>
+        </td>
+        <td>
+          <%= leela_tips %>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <th>
+          Destination
+        </th>
+        <th>
+          Shipment
+        </th>
+        <th>
+          Crates
+        </th>
+        <th>
+          Money
+        </th>
+      </tr>
+        <% deliveries.each do |deli| %>
+      <tr>
+
+          <td>
+            <%=deli.destination %>
+          </td>
+          <td>
+            <%=deli.shipment %>
+          </td>
+          <td>
+            <%=deli.crates %>
+          </td>
+          <td>
+            <%=deli.money %>
+          </td>
+          <% end %>
+      </tr>
+
+    </table>
 
   </body>
 </html>
