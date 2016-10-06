@@ -19,11 +19,11 @@ class Delivery
   end
 
   def determine_pilot
-    if @destination == " Earth"
+    if destination == " Earth"
       @pilot = "Fry"
-    elsif @destination == " Mars"
+    elsif destination == " Mars"
       @pilot = "Amy"
-    elsif @destination == " Uranus"
+    elsif destination == " Uranus"
       @pilot = "Bender"
     else
       @pilot =  "Leela"
@@ -40,10 +40,25 @@ class Delivery
 
   def piloted?(flyer)
     pilot.collect { |name| name.downcase }.detect do |pilot|
-      pilot.include? pilot.downcase
+      pilot.include? flyer.downcase
     end
   end
 
+  def fry?
+    pilot == "Fry"
+  end
+
+  def amy?
+    pilot == "Amy"
+  end
+
+  def bender?
+    pilot == "Bender"
+  end
+
+  def leela?
+    pilot == "Leela"
+  end
 
 end
 
@@ -63,3 +78,40 @@ puts total_profit
 deliveries.each do |name|
  puts name.pilot
 end
+
+
+
+
+
+fry_flights = deliveries.select { |delivery| delivery.fry?}
+
+fry_tips = fry_flights.reduce(0) { |sum, delivery| sum + delivery.money}/10.00
+
+puts "Fry:"
+puts fry_flights.length
+puts fry_tips
+
+amy_flights = deliveries.select { |delivery| delivery.amy?}
+
+amy_tips = amy_flights.reduce(0) { |sum, delivery| sum + delivery.money}/10.00
+
+puts "Amy:"
+puts amy_flights.length
+puts amy_tips
+
+bender_flights = deliveries.select { |delivery| delivery.bender?}
+
+bender_tips = bender_flights.reduce(0) { |sum, delivery| sum + delivery.money}/10.00
+
+
+puts "Bender:"
+puts bender_flights.length
+puts bender_tips
+
+leela_flights = deliveries.select { |delivery| delivery.leela?}
+
+leela_tips = leela_flights.reduce(0) { |sum, delivery| sum + delivery.money}/10.00
+
+puts "Leela:"
+puts leela_flights.length
+puts leela_tips
