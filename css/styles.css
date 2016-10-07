@@ -23,3 +23,16 @@ th {
 #piechart{
   margin-left: 100px;
 }
+#pchart{
+  margin-top: 25px;
+}
+
+/*#logo{
+  transform: scale(.2);
+}*/
+
+.jumbotron {
+  background-color: #00EDA4;
+  color: red;
+  text-shadow: -1px 0 #F6F664, 0 1px #F6F664, 1px 0 #F6F664, 0 -1px #F6F664;
+}
