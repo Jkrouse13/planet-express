@@ -1,0 +1,25 @@
+/*table {
+  border: 1px solid black;
+}
+
+tr {
+  border: 1px solid black;
+  width: 500px;
+}
+
+td {
+  border: 1px solid black;
+  width: 200px;
+}*/
+
+th {
+  text-align: center;
+}
+
+/*div{
+  border: 1px  solid red;
+}*/
+
+#piechart{
+  margin-left: 100px;
+}

@@ -1,90 +1,162 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Planet Express Report</title>
-  </head>
-  <body>
-    <h1><%= total_profit %></h1>
-    <table>
-      <tr>
-        <th>Pilot</th>
-        <th># of Trips</th>
-        <th>Total Bonus</th>
-      </tr>
-      <tr>
-        <td>Fry</td>
-        <td><%= fry_flights.length %></td>
-        <td><%= fry_tips %></td>
-      </tr>
-      <tr>
-        <td>
-          Amy
-        </td>
-        <td>
-          <%= amy_flights.length %>
-        </td>
-        <td>
-          <%= amy_tips %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Bender
-        </td>
-        <td>
-          <%= bender_flights.length %>
-        </td>
-        <td>
-          <%= bender_tips %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Leela
-        </td>
-        <td>
-          <%= leela_flights.length %>
-        </td>
-        <td>
-          <%= leela_tips %>
-        </td>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <th>
-          Destination
-        </th>
-        <th>
-          Shipment
-        </th>
-        <th>
-          Crates
-        </th>
-        <th>
-          Money
-        </th>
-      </tr>
-        <% deliveries.each do |deli| %>
-      <tr>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="utf-8">
+        <title>Planet Express Report</title>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages': ['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
 
-          <td>
-            <%=deli.destination %>
-          </td>
-          <td>
-            <%=deli.shipment %>
-          </td>
-          <td>
-            <%=deli.crates %>
-          </td>
-          <td>
-            <%=deli.money %>
-          </td>
-          <% end %>
-      </tr>
+                var data = google.visualization.arrayToDataTable([
+                    [
+                        'Pilot', 'Proft for Planet Express'
+                    ],
+                    [
+                        'Fry', <%= fry_profit %>
+                    ],
+                    [
+                        'Amy', <%= amy_profit %>
+                    ],
+                    [
+                        'Bender', <%= bender_profit %>
+                    ],
+                    ['Leela', <%= leela_profit %>]
+                ]);
 
-    </table>
+                var options = {
+                    title: ''
+                };
 
-  </body>
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                chart.draw(data, options);
+            }
+        </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+
+    </head>
+    <body class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>Weekly Profit: <%= total_profit %></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <h3>Shipment Log</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                            Destination
+                        </th>
+                        <th>
+                            Shipment
+                        </th>
+                        <th>
+                            Crates
+                        </th>
+                        <th>
+                            Money
+                        </th>
+                    </tr>
+                    <% deliveries.each do |deli| %>
+                    <tr>
+
+                        <td>
+                            <%=deli.destination %>
+                        </td>
+                        <td>
+                            <%=deli.shipment %>
+                        </td>
+                        <td>
+                            <%=deli.crates %>
+                        </td>
+                        <td>
+                            <%=deli.money %>
+                        </td>
+                        <% end %>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <h3>Pilot's Log</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center object-center">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Pilot</th>
+                        <th># of Trips</th>
+                        <th> Total Bonus</th>
+                    </tr>
+                    <tr>
+                        <td>Fry</td>
+                        <td><%= fry_flights.length %></td>
+                        <td><%= fry_tips %></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Amy
+                        </td>
+                        <td>
+                            <%= amy_flights.length %>
+                        </td>
+                        <td>
+                            <%= amy_tips %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Bender
+                        </td>
+                        <td>
+                            <%= bender_flights.length %>
+                        </td>
+                        <td>
+                            <%= bender_tips %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Leela
+                        </td>
+                        <td>
+                            <%= leela_flights.length %>
+                        </td>
+                        <td>
+                            <%= leela_tips %>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <h3>Profit for Planet Express by Pilot</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-2 object-center">
+                <div id="piechart" style="width: 700px; height: 600px;"></div>
+            </div>
+        </div>
+
+
+
+    </body>
 </html>
