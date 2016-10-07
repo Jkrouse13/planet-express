@@ -65,6 +65,9 @@
                 <table class="table table-striped">
                     <tr>
                         <th>
+                            Pilot
+                        </th>
+                        <th>
                             Destination
                         </th>
                         <th>
@@ -79,6 +82,9 @@
                     </tr>
                     <% deliveries.each do |deli| %>
                     <tr>
+                        <td>
+                            <%=deli.pilot %>
+                        </td>
 
                         <td>
                             <%=deli.destination %>
@@ -159,7 +165,7 @@
         </div>
         <div class="row">
             <div class="col-md-10 col-md-offset-2 object-center">
-                <div id="piechart" style="width: 700px; height: 600px;"></div>
+                <div id="piechart" style="width: 900px; height: 600px;"></div>
             </div>
         </div>
         <div class="row">
